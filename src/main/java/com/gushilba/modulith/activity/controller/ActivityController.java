@@ -23,8 +23,8 @@ public class ActivityController {
     }
 
     @PostMapping
-    ResponseEntity<ActivityResponse> createActivity(@RequestBody ActivityRequest activityRequest) {
-        var response = userController.getUserById(activityRequest.userId(), null);
+    ResponseEntity<ActivityResponse> createActivity(@RequestBody ActivityRequest activityRequest) throws Exception {
+        activityService.validateUser(activityRequest.userId());
         var result = activityService.createActivity(activityRequest);
         return ResponseEntity.ok(result);
     }

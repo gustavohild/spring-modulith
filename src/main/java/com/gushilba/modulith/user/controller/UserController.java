@@ -2,6 +2,7 @@ package com.gushilba.modulith.user.controller;
 
 import com.gushilba.modulith.user.dto.UserResponse;
 import com.gushilba.modulith.user.service.UserService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,9 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<UserResponse> getUserById(@PathVariable long id,
-                                             @RequestParam(required = false) String name) {
+                                                    @RequestParam(required = false) String name) {
+        if (id != 1)
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         return ResponseEntity.ok(userService.getUser(id));
     }
 
