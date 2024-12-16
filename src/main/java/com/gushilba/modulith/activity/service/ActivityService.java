@@ -25,11 +25,7 @@ public class ActivityService {
         A chamada aqui é feita através do método Controller para simular uma chamada de API. Dessa forma já construímos
         o request corretamente e o response tbm ja é mapeado corretamente
         */
-        // TODO Try Catch?
         var response = userClient.getUser(userId);
-        if (!response.getStatusCode().equals(HttpStatus.OK)) {
-            throw new Exception("USER DOES NOT EXIST");
-        }
     }
 
 }
